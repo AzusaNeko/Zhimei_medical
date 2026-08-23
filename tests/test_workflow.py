@@ -27,10 +27,9 @@ def test_high_risk_flow_interrupts_and_resumes():
     assert "审核未通过" in completed["answer"]
 
 
-def test_medium_risk_does_not_block_demo_flow():
+def test_medium_risk_does_not_block_flow():
     result = AdvisorService().start(
         "想了解皮肤护理项目", "皮肤护理", {"allergy_history": True}
     )
     assert result["status"] == "completed"
     assert result["risk_level"] == "medium"
-
