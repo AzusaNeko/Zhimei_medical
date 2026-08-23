@@ -75,7 +75,7 @@ def answer_agent(state: AdvisorState) -> AdvisorState:
         evidence = " ".join(item["content"] for item in state.get("sources", [])[:2])
         prefix = "医师审核已通过。" if decision else ""
         answer = (
-            f"{prefix}根据演示知识库：{evidence}"
+            f"{prefix}根据示例知识库：{evidence}"
             if evidence
             else "知识库依据不足，建议转人工咨询。"
         )
@@ -131,4 +131,3 @@ class AdvisorService:
 
 
 advisor_service = AdvisorService()
-

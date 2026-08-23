@@ -5,7 +5,7 @@ from .workflow import advisor_service
 
 
 app = FastAPI(
-    title="智美医美智能顾问平台 Demo",
+    title="智美医美智能顾问平台",
     version="0.1.0",
     description="LangGraph 知识科普、风险筛查与高风险医师审核最小实现。",
 )
@@ -14,9 +14,9 @@ app = FastAPI(
 @app.get("/")
 def root() -> dict:
     return {
-        "name": "zhimei-medical-advisor-demo",
+        "name": "zhimei-medical-advisor",
         "docs": "/docs",
-        "warning": "仅用于技术演示，不提供医疗诊断或治疗建议。",
+        "warning": "本系统不提供医疗诊断或治疗建议。",
     }
 
 
@@ -40,4 +40,3 @@ def review_consultation(thread_id: str, payload: ReviewRequest) -> dict:
         return advisor_service.review(thread_id, payload.action, payload.note)
     except KeyError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
-

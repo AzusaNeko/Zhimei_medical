@@ -1,2 +1,1 @@
-"""Zhimei medical advisor demo."""
-
+"""Zhimei medical advisor platform."""
