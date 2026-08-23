@@ -1,0 +1,2 @@
+"""Zhimei medical advisor demo."""
+
