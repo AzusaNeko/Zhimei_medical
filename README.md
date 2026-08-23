@@ -1,6 +1,6 @@
-# 智美医美智能顾问平台 - 最小可运行 Demo
+# 智美医美智能顾问平台
 
-这是简历项目「智美医美智能顾问平台」的个人复现版本，只实现一条最小但完整的业务链路：
+这是一个个人独立实现的可运行工程项目，聚焦医美知识科普、风险筛查与高风险人工审核，形成一条完整业务链路：
 
 ```text
 用户咨询
@@ -12,7 +12,7 @@
                     → Command(resume) 恢复 Workflow
 ```
 
-> 本项目不是原公司代码，也不是生产医疗系统，仅用于个人学习、技术演示和面试讲解。它不能替代执业医师面诊、诊断或治疗方案。
+> 本仓库不包含任何公司的私有源代码、业务数据或医学规则。它是个人独立实现的工程项目，不是生产医疗系统，不能替代执业医师面诊、诊断或治疗方案。
 
 ## 已实现
 
@@ -22,7 +22,7 @@
 - 风险筛查 Agent
 - 高风险 `interrupt()` 暂停
 - 医师审核后 `Command(resume=...)` 恢复
-- 本地演示知识库与来源返回
+- 本地示例知识库与来源返回
 - Dockerfile 和自动测试
 
 为了无需 API Key 即可运行，RAG 默认采用 BM25-like 词法评分和中文字符二元组重合度。生产扩展时可以把 `LocalHybridRetriever` 替换为 BGE-M3 + Milvus + BGE-Reranker。
@@ -33,7 +33,7 @@
 app/
   main.py       # FastAPI 接口
   models.py     # 请求模型
-  knowledge.py  # 演示知识库与本地检索器
+  knowledge.py  # 示例知识库与本地检索器
   workflow.py   # LangGraph Agent Workflow 与 HitL
 tests/
   test_workflow.py
@@ -98,9 +98,9 @@ pytest -q
 
 可以说：
 
-> 我个人复现了一个基于 LangGraph 的医美智能顾问最小版本，将知识检索、确定性风险规则和 Human-in-the-Loop 串成可运行工作流。高风险状态通过 interrupt 暂停，使用 thread_id 从 checkpoint 恢复，并支持医师批准、拒绝或修改。
+> 我独立实现了一个基于 LangGraph 的医美智能顾问项目，将知识检索、确定性风险规则和 Human-in-the-Loop 串成可运行工作流。高风险状态通过 interrupt 暂停，使用 thread_id 从 checkpoint 恢复，并支持医师批准、拒绝或修改。
 
-不能说它是公司的生产源代码，也不要声称当前 Demo 已经使用 Milvus、BGE-M3、PostgreSQL 或真实医学规则。
+面试时应明确这是个人独立实现的公开项目，不要声称它是公司的生产源代码，也不要声称当前版本已经使用 Milvus、BGE-M3、PostgreSQL 或真实医学规则。
 
 ## 后续扩展
 
